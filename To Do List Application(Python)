@@ -1,10 +1,15 @@
-# This my first task under CodSoft's Python Programming Internship...
-#This project aims to create a command-line or GUI-based application using Python, allowing users to create, update, and track their to-do lists
+# This my first task under CodSoft Python Programming Internship...
+# This project aims to create a command-line or GUI-based application using Python, allowing users to create, update,
+# and track their to-do lists
 
 import os
+
+
 # Defining function add_task
 def add_task(tasks, description, time_constraint):
     tasks.append({"description": description, "time_constraint": time_constraint})
+
+
 # Defining function view_tasks for viewing existing tasks
 def view_tasks(tasks):
     if not tasks:
@@ -13,6 +18,8 @@ def view_tasks(tasks):
         print("Tasks:")
         for idx, task in enumerate(tasks, start=1):
             print(f"{idx}. {task['description']} - time_constraint: {task['time_constraint']}")
+
+
 # Defining function delete_task for deleting existing tasks
 def delete_task(tasks, task_index):
     if 1 <= task_index <= len(tasks):
@@ -20,11 +27,15 @@ def delete_task(tasks, task_index):
         print("Task deleted successfully.")
     else:
         print("Invalid task index.")
+
+
 # Defining function save_task_to_file for saving tasks on a file path
 def save_tasks_to_file(tasks, file_path):
     with open(file_path, 'w') as f:
         for task in tasks:
             f.write(f"{task['description']}|{task['time_constraint']}\n")
+
+
 # Defining function load_tasks_from_file for loading tasks from file path
 def load_tasks_from_file(file_path):
     tasks = []
@@ -34,9 +45,10 @@ def load_tasks_from_file(file_path):
                 description, time_constraint = line.strip().split('|')
                 tasks.append({"description": description, "time_constraint": time_constraint})
     return tasks
+
+
 # This will be our UI or frontend for this application...
 def main():
-    tasks = []
     file_path = "tasks.txt"
 
     # Load existing tasks from file (if available)
@@ -68,6 +80,7 @@ def main():
             break
         else:
             print("Invalid choice. Please try again.")
+
 
 if __name__ == "__main__":
     main()
